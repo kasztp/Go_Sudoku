@@ -6,15 +6,19 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 )
 
 func main() {
 	challenge := read_sudoku()
 	fmt.Println("Original:")
 	print_board(challenge)
+	start := time.Now()
 	solve(challenge)
+	duration := time.Since(start)
 	fmt.Println("\nSolved:")
 	print_board(challenge)
+	fmt.Printf("\nTime to solve: %s", duration)
 }
 
 func read_sudoku() [][]string {
