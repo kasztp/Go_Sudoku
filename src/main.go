@@ -43,7 +43,12 @@ func read_sudoku() [9][9]int {
 	for i, row := range rows {
 		for j := range row {
 			text := rows[i][j]
-			temp[i][j], _ = strconv.Atoi(text) // Todo: err to be used for input checking!
+			temp[i][j], err = strconv.Atoi(text)
+			if err != nil {
+				fmt.Println("Invalid input characters in csv!")
+				log.Fatal(err)
+				os.Exit(1)
+			}
 		}
 	}
 
